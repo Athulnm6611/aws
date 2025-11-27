@@ -1,4 +1,4 @@
-.name: Auto Deploy to EC2
+name: Auto Deploy to EC2
 
 on:
   push:
@@ -33,5 +33,7 @@ jobs:
             cd /home/ubuntu/webapp
             sudo docker stop webapp || true
             sudo docker rm webapp || true
-            sudo docker build -t webapp
+            sudo docker build -t webapp .
+            sudo docker run -d -p 80:80 --name webapp webapp
+
 
